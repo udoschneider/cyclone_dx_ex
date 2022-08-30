@@ -1,18 +1,25 @@
-defmodule CycloneDx do
+defmodule CycloneDX do
   @moduledoc """
-  Documentation for `CycloneDx`.
+  A CycloneDX SBOM
   """
+  defstruct bomFormat: "CycloneDX",
+            specVersion: "1.4"
+
+  @type t :: %__MODULE__{
+          bomFormat: binary(),
+          specVersion: binary()
+        }
 
   @doc """
-  Hello world.
+  Create a new CycloneDX SBOM.
 
-  ## Examples
-
-      iex> CycloneDx.hello()
-      :world
-
+  ```elixir
+  iex> CycloneDX.new()
+  %CycloneDX{}
+  ```
   """
-  def hello do
-    :world
+  @spec new :: CycloneDX.t()
+  def new() do
+    %__MODULE__{}
   end
 end
